@@ -7,21 +7,6 @@
  * title : 모달 제목
  *
  */
-/*
-const setLoginModal = ({modalId, title}) => {
-    // let append = "";
-    // append += `<div id = "modal${key}</td>`
-    // append += `<td class ="up_red_color up_box">${Number(data.closePrice).toLocaleString()}</td>`
-    // append += `<td class ="up_red_color">${data.chgRate}%</td>`
-    // append += `<td class = "down_blue_color down_box">${Number(data.closePrice).toLocaleString()}</td>`
-    // append += `<td class ="down_blue_color">${data.chgRate}%</td>`
-    // append += `<td>${numberToKorean(Number(data.value).toFixed(0))}</td>`
-
-    // listTarget.innerHTML = append
-
-}
-*/
-
 
 const setLoginModal = (arr) => {
     var str = "";

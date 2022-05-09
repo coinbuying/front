@@ -102,6 +102,8 @@ html, body{
     font: 16px;
     font-weight: bold;
     font-family: 'Noto Sans KR', sans-serif;
+    overflow: hidden;
+    background-color: #252627;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,

@@ -77,6 +77,15 @@
     font: normal normal 14px var(--default_font_family);
 }
 
+.font-18b {
+    font: normal bold 18px var(--default_font_family);
+}
+
+.font-16n {
+    font: normal normal 16px var(--default_font_family);
+}
+
+
 .font-14b {
     font: normal bold 14px var(--default_font_family);
 }
@@ -111,8 +120,9 @@
 
 .gray_font{
     color : #a4a4a4;
-    font-weight: bold;
-    font-size: 14px;
+}
+.title_color{
+    color: #D5D5D5;
 }
 
 .black_font{

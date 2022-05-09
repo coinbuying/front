@@ -11,11 +11,19 @@
     <link rel ='stylesheet' href="../public/stylesheets/font.css"/>
     <link rel ='stylesheet' href="../public/stylesheets/style.css"/>
     <link rel ='stylesheet' href="../public/stylesheets/modal.css"/>
-
+    <link rel ='stylesheet' href="../public/stylesheets/card.css"/>
+    <link rel ='stylesheet' href="../public/stylesheets/crpytoIcon.css"/>
 
     <script src="../public/javascripts/lib/jquery-3.4.1.min.js"></script>
     <script src="../public/javascripts/lib/jquery-ui-1.11.4.min.js"></script>
 
+
+
+      <!--highcharts-->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/annotations.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
 
     <link rel ='stylesheet' href="../public/stylesheets/public.css"/>
@@ -25,29 +33,56 @@
     <script src="../public/javascripts/public.js"></script>
     <script src="../public/javascripts/index.js"></script>
     <script src="../public/javascripts/modal/publicModal.js"></script>
+    <script src="../public/javascripts/myData.js"></script>
+    <script src="../public/javascripts/myWallet.js"></script>
+    <script src="../public/javascripts/chart/highchart.js"></script>
     <title>Coin Buying : 나의 가상자산 포트폴리오</title>
 
 </head>
 
 <body>
     <div class = "wrap">
+        <div class = "public-header">
+            <div class = "header-wrap">
+                <div class ="nav-item page-logo">
+                    CoinBuying
+                </div>
+                <div class ="nav-item register">
+                    <p id = "sign_up" class = "skeleton-list-item">로그인</p>
+                    <p id = "sign_in" class = "skeleton-list-item">회원가입</p>
+                </div>
+            </div>
+        </div>
         <div class = "container">
             <div class = "public-size">
-                <div class = "public-header">
-                    <div class = "header-wrap">
-                        <div class ="nav-item page-logo">
-                            CoinBuying
+                <div class = "public-contents">
+                    <div class = "my_cash_card">
+                        <div class = "card_title">
+                            <p class = "font-12n margin-r-16 title_color">최성우님의 순자산</p>
+                            <img class = "go_detail_img">
+                            </div>
+                            <div class = "padding-lr-24 padding-b-8 flex">
+                                <p class = "font-18b  font-color-w">30,000,000 원</p>
+                                <p class = "font-12n  gray_font margin-l-8 margin-t-4">(22.05.06 13:42 기준)</p>
+                            </div>
+                    </div>
+
+
+                    <div class = "public_toggle_div margin-t-16 flex">
+                        <div class = "my_wallet_tab public_toggle font-14n font-color-w">
+                            <p class = "tab_my_wallet">포트폴리오</p>
                         </div>
-                        <div class ="nav-item register">
-                            <p id = "sign_in" class = "skeleton-list-item">로그인</p>
-                            <p id = "sign_up" class = "skeleton-list-item">회원가입</p>
+                        <div class = "my_data_tab public_toggle toggle_select margin-l-8 font-14n font-color-w">
+                            <p class = "tab_my_data">데이터 분석</p>
+                        </div>
+                        <div class = "community_tab public_toggle margin-l-8 font-14n font-color-w">
+                            <p class = "tab_community">커뮤니티</p>
                         </div>
                     </div>
-                </div>
-                <div class = "public-contents">
 
+                    
                 </div>
-
+                </div>
                 <div class = "public-footer">
                 </div>
             </div>

@@ -1,27 +1,25 @@
 window.onload = async function () {
-    setTimeout(initView, 1300);
+    initView()
 }
 
 /* 초기 화면 세팅 */
 const initView = () => {
-    //로딩 class 모두 제거.
-    removeLoadingItem();
 
-    //로그인 버튼 이벤트 
-    document.getElementById("sign_in").addEventListener("click", function() {
+    if(!getUserInfo()){
+        console.log("로그인 되어있지 않음.")
         setLoginModal();
-    })
+    }
 
-    //회원가입 버튼 이벤트
-    document.getElementById("sign_up").addEventListener("click", function() {
-        //setLoginModal();
-    })
+
+    //loadMyWalletView();
+    
 
 
 }
 
-
-
-
+//로그인 정보를 가져옴.
+const getUserInfo = () => {
+    return true;
+}
 
 

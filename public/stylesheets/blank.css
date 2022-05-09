@@ -124,6 +124,9 @@
     margin-top: 8px;
 }
 
+.margin-t-12 {
+    margin-top: 12px;
+}
 .margin-t-16 {
     margin-top: 16px;
 }
@@ -277,6 +280,18 @@
     padding: 40px 0px;
 }
 
+.padding-a-16 {
+    padding: 16px;
+}
+
+.padding-a-24 {
+    padding: 24px;
+}
+
+.padding-a-32 {
+    padding: 32px;
+}
+
 .padding-lr-8 {
     padding: 0px 8px;
 }
@@ -299,6 +314,9 @@
 
 .padding-t-8 {
     padding-top: 8px;
+}
+.padding-t-12 {
+    padding-top: 12px;
 }
 
 .padding-t-16 {
@@ -510,6 +528,7 @@
 
 /*해당되는 컴포넌트에 적용*/
 .skeleton-list-item {
+    border-radius: 6px;
     -webkit-animation: skeleton-gradient 1.8s infinite ease-in-out;
     animation: skeleton-gradient 1.8s infinite ease-in-out;
 }
