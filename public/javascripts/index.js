@@ -8,10 +8,11 @@ const initView = () => {
     if(!getUserInfo()){
         console.log("로그인 되어있지 않음.")
         setLoginModal();
+        return;
     }
 
 
-    //loadMyWalletView();
+    loadMyWalletView();
     
 
 
