@@ -1,14 +1,16 @@
 /*내 자산 페이지*/
-
 const loadMyWalletView = () => {
     //스켈레톤 뷰 불러오고
     setMyWalletSkeletonView();
 
+    document.querySelector("#sign_up").addEventListener("click",function() {
+        setLoginModal();
+    })
     //api 요청 data
     //다 저장되면
 
     //1.3초뒤에 세팅
-    setTimeout(setMyWalletView, 1300);
+    setTimeout(setMyWalletView, 800);
 }
 
 
@@ -16,7 +18,15 @@ const loadMyWalletView = () => {
 const setMyWalletView = () => {
     //컴포넌트 위에서 하나씩 세팅
     setMyPropertyComponent();
-    setCategoryComponent();
+
+    //카테고리 컴포넌트 세팅
+    //카테고리가 생성되는 페이지의 True 해주세요.
+    setCategoryComponent({
+        myWallet : true,
+        myData : false,
+        community : false,
+    });
+
     setMyPropertyChartComponent();
     setMyWalletInfoComponent();
 }
@@ -35,47 +45,6 @@ const setMyPropertyComponent = () => {
     </div>
     `
     document.getElementsByClassName("my_cash_card")[0].innerHTML = append
-}
-
-// 카테고리 구성 컴포넌트
-const setCategoryComponent = () => {
-    let append = 
-    `
-    <div class = "my_wallet_tab public_toggle toggle_select font-14n font-color-w">
-        <p class = "tab_my_wallet">포트폴리오</p>
-    </div>
-    <div class = "my_data_tab public_toggle margin-l-8 font-14n font-color-w">
-        <p class = "tab_my_data">데이터 분석</p>
-    </div>
-    <div class = "community_tab public_toggle margin-l-8 font-14n font-color-w">
-        <p class = "tab_community">커뮤니티</p>
-    </div>
-    `
-    document.getElementsByClassName("public_toggle_div")[0].innerHTML = append
-
-    /*탭 선택 이벤트*/
-    document.querySelector(".public_toggle_div").addEventListener("click", function(event) {
-        if(event.target.localName === "p") {
-            if(event.target.parentNode.classList.contains("toggle_select")) {
-                // loadMyWalletView();
-                return;
-            } else {
-                document.querySelector(".public_toggle_div > .toggle_select").classList.remove("toggle_select");
-                event.target.parentNode.classList.add("toggle_select");
-
-                //내 포트폴리오 화면 구성
-                if(event.target.classList.contains("tab_my_wallet")) {
-                    loadMyWalletView();
-                } else if(event.target.classList.contains("tab_my_data")) {
-                    loadMyDataView();
-                } else if(event.target.classList.contains("tab_community")) {
-
-
-                }
-            }
-        }
-    })
-
 }
 
 //내 자산 변동률 컴포넌트
