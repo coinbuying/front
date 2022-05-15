@@ -66,3 +66,46 @@ const setCategoryComponent = ({myWallet,myData,community}) => {
     })
 
 }
+
+
+const setHeaderComponent = () => {
+
+    const userInfo = getUserInfo();
+
+    let append = 
+    `
+    <div class = "header-wrap">
+        <div class ="nav-item page-logo">
+            CoinBuying
+        </div>
+        <div class ="nav-item register">
+            ${userInfo ? "<p id = 'my_page'>내 정보</p>" : "<p id = 'sign_up'>로그인</p>" }
+            ${userInfo ? "<p id = 'logout'>로그아웃</p>" : "<p id = 'sign_in'>회원가입</p>" }
+        </div>
+    </div>
+    `
+    document.getElementsByClassName("public-header")[0].innerHTML = append
+
+    //유저 정보를 확인할 수 없는 경우
+    if(!userInfo) {
+        document.querySelector("#sign_up").addEventListener("click",function() {
+            setLoginModal();
+        })   
+
+        document.getElementById("sign_in").addEventListener("click", function() {
+            setRegisterModal();
+        })
+    }
+
+    if(userInfo) {
+        document.getElementById("logout").addEventListener("click",function() {
+            console.log("로그아웃")
+        })
+    }
+}
+
+//로그인 정보를 확인합니다.
+const getUserInfo = () => {
+    return false;
+}
+

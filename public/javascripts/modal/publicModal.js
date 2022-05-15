@@ -20,7 +20,7 @@ const setLoginModal = (arr) => {
             str += '<div class ="login_modal_content temp_modal_body modal_body_padding_24">'
             str += '<div class ="coinbuying_login_group">'
             str += '<div class ="login_input_group">'
-            str += '<input type = "text" class ="public_text margin-tb-4" placeholder = "아이디">'
+            str += '<input type = "text" class ="login_email public_text margin-tb-4" placeholder = "아이디">'
             str += '<input type = "text" class ="public_text margin-tb-4" placeholder = "비밀번호">'
             str += '</div>'
             str += '<div class ="coinbuying_login_btn margin-l-4" id = "coinbuying_login">로그인</div>'
@@ -58,16 +58,35 @@ const setLoginModal = (arr) => {
         document.getElementById("loginModal").remove();
     })
 
+    //로그인 시도
     document.getElementById("coinbuying_login").addEventListener("click",function() {
-        alert("자체 로그인")
+        let userEmail = document.getElementsByClassName("login_email")[0].value;
+
+        //정상적인 이메일인지 체크
+        if(!isEmailForm(userEmail)) {
+            alert("올바르지 않은 이메일 입니다.");
+            return;
+        }
+
+        //필수값이 모두 들어가있는지 확인
+
+
+        //로그인 요청
+        $.ajax({
+            url: "http://54.215.113.3:8081/user/login",
+            type: "post",
+            async: false,
+            dataType: "JSON",//서버로 부터 돌려받을 데이터의 타입
+                data: {
+                    "email" : "12323@naver.com",
+                    "password" : "12345"
+                },
+                success: function (result) {
+                    //정상적인 회원가입이 됐을 경우.
+                    alert("성공!",result)
+                }
+            });
     })
-    // $(document).off("click","#MemberInfoOK").on("click","#MemberInfoOK", function(){
-    //     $("#"+div.id).remove();
-    // });
-    //
-    // $(document).off("click","#member_info_modal_close").on("click","#member_info_modal_close", function(){
-    //     $("#"+div.id).remove();
-    // });
 
     //esc로 모달창 닫기 이벤트
     window.onkeyup = function(e) {
@@ -96,7 +115,7 @@ const setRegisterModal = (arr) => {
             str += '<div class ="coinbuying_login_group">'
             str += '<div class ="login_input_group">'
             str += '<input type = "text" class ="register_email public_text margin-tb-4" placeholder = "이메일">'
-            str += '<input type = "text" class ="register_password public_text margin-tb-4" placeholder = "비밀번호">'
+            str += '<input type = "password" class ="register_password public_text margin-tb-4" placeholder = "비밀번호">'
             str += '<input type = "text" class ="register_nickname public_text margin-tb-4" placeholder = "닉네임">'
             str += '<input type = "text" class ="register_api public_text margin-tb-4" placeholder = "빗썸 API KEY">'
             str += '<input type = "text" class ="register_api public_text margin-tb-4" placeholder = "업비트 API KEY">'
@@ -126,8 +145,6 @@ const setRegisterModal = (arr) => {
         ResetNewModalDragging('.register-modal-container');
     });
 
-
-
     SetNewModalDragging('.register-modal-container', '.member_info_modal_header');
 
 
@@ -137,26 +154,36 @@ const setRegisterModal = (arr) => {
 
     document.getElementById("register_btn").addEventListener("click",function() {
 
-        /* 회원가입 요청 */
-        $.ajax({
-            url: "/",
-            type: "post",
-            async: false,
-            dataType: "JSON",//서버로 부터 돌려받을 데이터의 타입
+    let userEmail = document.querySelector(".register_email").value;
+    
+    //이메일 검증
+    if(!isEmailForm(userEmail)) {
+        alert("올바르지않은 이메일 입니다.")
+        return false;
+    }
+
+    //필수 정보를 입력했는지 체크
+
+
+
+    //서버로 회원가입 요청
+    $.ajax({
+        url: "/",
+        type: "post",
+        async: false,
+        dataType: "JSON",//서버로 부터 돌려받을 데이터의 타입
             data: {
 
             },
             success: function () {
-                //로그인을 하면 쿠키에 해당 정보를 저장.
+                //정상적인 회원가입이 됐을 경우.
                 const resoponse = {
                     userId : "1", // 유저의 
                     access : "2323", // 해당 토큰으로 요청
                     refresh : "23232", //
                 }
-
             }
         });
-
     })
 
     //esc로 모달창 닫기 이벤트
@@ -169,6 +196,17 @@ const setRegisterModal = (arr) => {
     }
 }
 
+//이메일 검증
+const isEmailForm = (userEmail) => {
+    var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i; // 검증에 사용할 정규식 변수 regExp에 저장
+     
+    if (userEmail.match(regExp) != null) { 
+        return true;
+    }
+    else {
+        return false;
+    }
+}
 
 /**
  * 드래그로 인한 모달 창 위치 초기화
@@ -224,3 +262,4 @@ function SetNewModalDragging(ModalContentId, HeaderId) {
     }
 
 }
+

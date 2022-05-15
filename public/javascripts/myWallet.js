@@ -3,13 +3,6 @@ const loadMyWalletView = () => {
     //스켈레톤 뷰 불러오고
     setMyWalletSkeletonView();
 
-    document.querySelector("#sign_up").addEventListener("click",function() {
-        setLoginModal();
-    })
-
-    document.getElementById("sign_in").addEventListener("click", function() {
-        setRegisterModal();
-    })
     //api 요청 data
     //다 저장되면
 
@@ -20,6 +13,9 @@ const loadMyWalletView = () => {
 
 
 const setMyWalletView = () => {
+    //로그인 정보 세팅
+    setHeaderComponent();
+
     //컴포넌트 위에서 하나씩 세팅
     setMyPropertyComponent();
 
