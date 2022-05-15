@@ -60,8 +60,16 @@
 
 .public-modal-container{
     width: 300px;
-    height: 280px;
+    height: 180px;
+}
 
+.login_input_group{
+    text-align: center;
+}
+
+.register-modal-container {
+    width: 300px;
+    height: 300px;
 }
 
 .modal_close_img{

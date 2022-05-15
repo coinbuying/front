@@ -6,6 +6,10 @@ const loadMyWalletView = () => {
     document.querySelector("#sign_up").addEventListener("click",function() {
         setLoginModal();
     })
+
+    document.getElementById("sign_in").addEventListener("click", function() {
+        setRegisterModal();
+    })
     //api 요청 data
     //다 저장되면
 
@@ -26,9 +30,11 @@ const setMyWalletView = () => {
         myData : false,
         community : false,
     });
-
+    //내 자산 변동률 차트 생성
     setMyPropertyChartComponent();
+    //자산 정보 컴포넌트 생성
     setMyWalletInfoComponent();
+    
 }
 
 //내 순자산 정보 컴포넌트
@@ -64,14 +70,24 @@ const setMyPropertyChartComponent = () => {
     setMyPropertyChart("myPropertyChart")
 }
 
+
+
+
 //내 보유 자산 구성 컴포넌트
 const setMyWalletInfoComponent = () => {
     let append = 
     `
-    <div class = "card_title">
+ <div class = "card_title">
     <p class = "font-12n title_color margin-r-16 title_color">내 보유 자산</p>
     <img class = "go_detail_img">
 </div>
+
+<div class = "flex flex-j-center">
+    <div class = "my_wallet_chart padding-a-16" style = "width : 240px; padding : 0 ">
+        <canvas id="walletChart"></canvas>
+    </div>
+</div>
+
 <div class = "font-12n font-color-w my_currency_info">
     <div class = "flex crpto_title flex-a-center margin-b-4">
         <img class = "btc_icon margin-r-4">
@@ -139,8 +155,53 @@ const setMyWalletInfoComponent = () => {
     `
     document.getElementsByClassName("my_wallet_info")[0].innerHTML = append
 
+    //자산 정보 도넛 차트 생성
+
+    let percent = ['23','23','44','19']
+    //내가 보유하고있는 자산 이름
+    const data = {
+        labels: [
+          `BTC ${percent[0]}%`,
+          `ETH ${percent[1]}%`,
+          `SOL ${percent[2]}%`,
+          `KRW ${percent[3]}%`
+        ],
+        datasets: [{
+          label: '내 자산 비율',
+          data: [2000,3333,2222,1283],
+          backgroundColor: [
+            'rgb(255, 99, 132)',
+            'rgb(54, 162, 235)',
+            'rgb(255, 205, 86)',
+            'rgb(255, 125, 236)'
+          ],
+          hoverOffset: 4
+        }],
+      };
+
+    const config = {
+        type: 'doughnut',
+        data: data,
+        options: {
+            
+            plugins : {
+                legend: { 
+                    position: 'top', 
+                },
+            },
+            layout: {
+                // padding: -30
+            }
+        }
+      };
+
+    const myChart = new Chart(document.getElementById('walletChart'),config);
+
+
 
 }
+
+
 
 //첫 화면 스켈레톤 UX 컴포넌트
 const setMyWalletSkeletonView = () => {
@@ -194,6 +255,11 @@ const setMyWalletSkeletonView = () => {
     </div>
 </div>
 
+<div class = "my_wallet_chart">
+    
+</div>
+
+
 <div class ="flex flex-j-center">
     <p style = "border-bottom: 1px solid #9A9A9A; width: 85%; float: center; opacity: 0.3;"></p>
 </div>
@@ -232,7 +298,7 @@ const setMyWalletSkeletonView = () => {
     document.getElementsByClassName('public-contents')[0].insertAdjacentHTML("beforeend", append);
 
 
-    
+
 }
 
 
