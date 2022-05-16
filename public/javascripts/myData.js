@@ -98,19 +98,49 @@ const setMyEarningsInfo = ({type}) => {
         case "day":
             append =
             `
-                day 입니다.
+            <div class = "padding-a-16 title_color">
+            님의 자산이 전일대비 36% 증가했습니다.
+            <div class = "my-earning-data margin-t-16">
+                    <table class ="flex">
+                    <thead>
+                     </thead>
+                        <tbody>
+                            <tr>
+                                <td>솔라나</td>
+                                <td>20%</td>
+                                <td>392,233원</td>
+                            </tr>
+                            <tr>
+                                <td>비트코인</td>
+                                <td>12%</td>
+                                <td>452,200원</td>
+                            </tr>
+                            <tr>
+                                <td>이더리움</td>
+                                <td>24%</td>
+                                <td>512,330원</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id = "dayChart" style = "width:100%; height:70px; border-radius: 6px;"></div>
+
+            </div>
+
             `
+
         break;
         case "weekly":
             append =
             `
-                weekly입니다.
+            <div>일주일 수익률</div>
             `
             break;
         case "month":
             append =
             `
-                month 입니다.
+            <div>한달 수익률</div>
             `
             break;
     }
