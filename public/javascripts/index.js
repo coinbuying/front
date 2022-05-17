@@ -8,7 +8,7 @@ const initView = () => {
     // if(!getUserInfo()){
     //     setLoginModal();
     //     return;
-    // }
+    // }  
 
     loadMyWalletView();
 }

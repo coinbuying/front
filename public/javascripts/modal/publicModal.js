@@ -167,23 +167,37 @@ const setRegisterModal = (arr) => {
 
 
     //서버로 회원가입 요청
-    $.ajax({
-        url: "/",
-        type: "post",
-        async: false,
-        dataType: "JSON",//서버로 부터 돌려받을 데이터의 타입
-            data: {
+    fetch("http://54.215.253.43:8000/user/signup", {
+        method: "POST",
+        mode:'no-cors',
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "*/*",
+          "Access-Control-Allow-Origin":"",
+          "Access-Control-Allow-Credentials": 'true',
+        },
+        body: JSON.stringify({
+            "name" : "111우",
+            "email" : "test222221@naver.com",
+            "password" : "123123"
+        }),
+      }).then((response) => console.log(response));
 
-            },
-            success: function () {
-                //정상적인 회원가입이 됐을 경우.
-                const resoponse = {
-                    userId : "1", // 유저의 
-                    access : "2323", // 해당 토큰으로 요청
-                    refresh : "23232", //
-                }
-            }
-        });
+    // $.ajax({
+    //     url: "http://54.215.253.43:8000/user/signup",
+    //     type: "post",
+    //     async: false,
+    //     dataType: "JSON",//서버로 부터 돌려받을 데이터의 타입
+    //         data: {
+    //             "name" : "ㅅ서ㅇ우",
+    //             "email" : "test1@naver.com",
+    //             "password" : "123123"
+    //         },
+    //         success: function (result) {
+    //             console.log("result",result)
+
+    //         }
+    //     });
     })
 
     //esc로 모달창 닫기 이벤트
