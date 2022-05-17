@@ -5,6 +5,7 @@ const port = 8081
 
 
 app.use(express.static('public'));
+// app.use(cors());
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/views/index.html');
