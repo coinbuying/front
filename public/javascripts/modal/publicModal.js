@@ -162,24 +162,18 @@ const setRegisterModal = (arr) => {
         return false;
     }
 
-    //필수 정보를 입력했는지 체크
-
-
-
     //서버로 회원가입 요청
     fetch("http://54.215.253.43:8000/user/signup", {
         method: "POST",
         mode:'no-cors',
+        credentials: 'include',
         headers: {
-          "Content-Type": "application/json",
-          "Accept": "*/*",
-          "Access-Control-Allow-Origin":"",
-          "Access-Control-Allow-Credentials": 'true',
+            'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            "name" : "111우",
-            "email" : "test222221@naver.com",
-            "password" : "123123"
+            name: "111우",
+            email : "tt221@naver.com",
+            password : "123123"
         }),
       }).then((response) => console.log(response));
 
