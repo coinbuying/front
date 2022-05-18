@@ -162,36 +162,24 @@ const setRegisterModal = (arr) => {
         return false;
     }
 
+    //        // mode:'no-cors',
+        // credentials: 'include',
     //서버로 회원가입 요청
-    fetch("http://54.215.253.43:8000/user/signup", {
+    fetch("http://54.215.113.3:8081/user/signup", {
         method: "POST",
-        mode:'no-cors',
-        credentials: 'include',
+        dataType:"json",
+        // mode:'no-cors',
         headers: {
-            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            name: "111우",
-            email : "tt221@naver.com",
+            name: "성우입니다",
+            email :"realemail@naver.com",
             password : "123123"
-        }),
+     }),
       }).then((response) => console.log(response));
 
-    // $.ajax({
-    //     url: "http://54.215.253.43:8000/user/signup",
-    //     type: "post",
-    //     async: false,
-    //     dataType: "JSON",//서버로 부터 돌려받을 데이터의 타입
-    //         data: {
-    //             "name" : "ㅅ서ㅇ우",
-    //             "email" : "test1@naver.com",
-    //             "password" : "123123"
-    //         },
-    //         success: function (result) {
-    //             console.log("result",result)
-
-    //         }
-    //     });
     })
 
     //esc로 모달창 닫기 이벤트
